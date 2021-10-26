@@ -1,3 +1,7 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
 #define max_lastname 50
 #define num_marks 3
 #define mark_min 2
@@ -22,9 +26,10 @@ int main()
     char lastname[max_lastname];
     if (fscanf(f, "%s", lastname) != 1) break;
     
-    struct  element *e = (struct element *) malloc(sizeof(struct e]));
+    struct  element *e = (struct element *) malloc(sizeof(struct element));
     if (last == NULL)
     {
+      e = (struct element *)
       e->prev - NULL;
       first = e;
     }
