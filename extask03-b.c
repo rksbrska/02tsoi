@@ -28,8 +28,17 @@ int main()
   printf("t1 = %f, t2 = %f\n", t1, t2);
          
   float t = 0.0f;
+  float x, y;
   #define eps 0.001f
   while (1)
-  {float x = x0 + v0x
+  {
+    float x = x0 + v0x * t;
+    float y = y0 + v0y * t - g * t * t / 2.0f;
+    if (y <= 0.0f) break;
+     printf("t = %f, x = %f, y = %f\n", t, x, y);
+    t += eps;
+  }
+  printf("t = %f, x = %f, y = %f\n", t, x, y);
+  
 return 0;
 }
