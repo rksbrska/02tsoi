@@ -2,6 +2,11 @@
 #include <stdio.h>
 #include <string.h>
 
+
+
+
+
+
 #define max_lastname 50
 #define num_marks 3
 #define mark_min 2
@@ -15,8 +20,10 @@ struct element
   struct element *prev;
   struct element *next;
 };
-element *first = NULL;
-element *last = NULL;
+
+struct element *first = NULL;
+struct element *last = NULL;
+
 
 int main()
 {
@@ -29,13 +36,18 @@ int main()
     struct  element *e = (struct element *) malloc(sizeof(struct element));
     if (last == NULL)
     {
-      e = (struct element *)
       e->prev - NULL;
+      e->next = NULL;
       first = e;
+      last = e;
     }
-    else e-> prev = last;
-    e->next = NULL;
-    last = e;
+    else 
+    {
+      last->next = e;
+      e-> prev = last;
+      e->next = NULL;
+      last = e;
+    }
     
     strcpy(e->lastname, lastname);
     for (int i = 0; i < num_marks; i++)
@@ -45,14 +57,26 @@ int main()
   
   struct element *current = first;
   while (current != NULL)
-  { printf("%s", *current = first;
-           while (current != NULL)
-           {
-             printf("%s", current->lastname);
+  { 
+    printf("%s", *current = first;
              for (int i = 0; i < num_marks; i++)
                printf(" %d", current->marks[i]);
              printf("\n");
              current = current->next;
+           }
+           printf("\n");
+           
+           
+           
+           current = last;
+           while (current != NULL)
+           {
+             printf("%s", current->lastname);
+             for (int i = 0; i <num_marks[i]);
+             printf(" %d", current->marks[i]);
+             printf("\n");
+             
+             current = current->prev;
            }
            return 0;
            }
