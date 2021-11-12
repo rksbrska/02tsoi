@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
 
 int main()
@@ -17,16 +18,24 @@ int main()
   float v0y = sinf(ra) * v0;
   
   #define g 9.8f
-  float x = x0 + v0x * t;
-  float y = y0 + v0y * t - g * t * t / 2.0f;
-  
-  float d = v0y * v0y +4.0f * g / 2.0f * y0;
+  float d = v0y * v0y + 4.0f * (g / 2.0f) * y0;
   printf("d = %f\n", d);
-  
-  float x1 = (-b - sqrtf(d)) / 2.0f * a;
-  float x2 = (-v0y + sqrtf(d)) / 2.0f * (-g / 2.0f);
-  
-  printf("x1 = %f, x2 = %f\n", x1, x2);
-         
+
+  float t1 = (-v0y - sqrtf(d)) / (2.0f * (-g / 2.0f));
+  float t2 = (-v0y + sqrtf(d)) / (2.0f * (-g / 2.0f));
+  printf("t1 = %f, t2 = %f\n", t1, t2);
+float t = 0.0f;
+float x, y;
+
+#define eps 0.01f
+while(1)
+{
+	x = x0 + v0x * t;
+	y = y0 + v0y * t - g * t * t / 2.0f;
+	if(y <= 0.0f) break;
+	t += eps;
+}
+printf("t = %f, x = %f, y = %f\n", t, x, y);
+
 return 0;
 }
